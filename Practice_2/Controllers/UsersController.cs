@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Logic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,21 @@ namespace Practice_2.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private IUserManager _userManager;
+        public UsersController(IUserManager userManager)
+        {
+            _userManager = userManager;
+        }
         [HttpGet]
         public IActionResult GetUsers()
         {
-            return Ok();
+            return Ok(_userManager.GetUsers());
         }
 
         [HttpPost]
-        public IActionResult PostUsers()
+        public IActionResult PostUsers(User user)
         {
-            return Ok();
+            return Ok(_userManager.PostUser(user));
         }
 
         [HttpPut]
