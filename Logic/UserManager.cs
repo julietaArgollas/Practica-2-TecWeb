@@ -28,12 +28,31 @@ namespace Logic
 
         public User PutUser(User user)
         {
-            return null;
+            User userUpdate = Users.Find(u => u.Id == user.Id);
+            if (userUpdate == null)
+            {
+                return null;
+            }
+            else
+            {
+                userUpdate.Name = user.Name;
+                userUpdate.Id = user.Id;
+                return user;
+            }
         }
 
-        public User DeleteUser(User user)
+        public User DeleteUser(int userId)
         {
-            return null;
+            User userFound = Users.Find(u => u.Id == userId);
+            if (userFound != null)
+            {
+                Users.Remove(userFound);
+                return userFound;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

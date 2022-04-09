@@ -30,15 +30,15 @@ namespace Practice_2.Controllers
         }
 
         [HttpPut]
-        public IActionResult PutUsers()
+        public IActionResult PutUsers(User user)
         {
-            return Ok();
+            return Ok(_userManager.PutUser(user));
         }
 
         [HttpDelete]
-        public IActionResult DeleteUsers()
+        public IActionResult DeleteUsers(int userId)
         {
-            return Ok();
+            return Ok(_userManager.DeleteUser(userId));
         }
     }
 }

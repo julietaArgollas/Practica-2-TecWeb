@@ -42,7 +42,7 @@ namespace Practice_2
 
                 options.SwaggerDoc(groupName, new OpenApiInfo
                 {
-                    Title = $"Practica#2 {groupName}",
+                    Title = $"{Configuration.GetSection("Application").GetSection("Title").Value} {groupName}",
                     Version = groupName,
                     Description = "Practica#2 API",
                     Contact = new OpenApiContact
